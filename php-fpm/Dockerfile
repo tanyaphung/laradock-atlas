@@ -1460,6 +1460,21 @@ RUN if [ ${INSTALL_FAKETIME} = true ]; then \
     echo "/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1" > /etc/ld.so.preload \
 ;fi
 
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    default-libmysqlclient-dev \
+    gcc \
+    g++ \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN python3 -m pip install --break-system-packages \
+    mysqlclient \
+    numpy \
+    scipy \
+    pandas
+
 # Configure locale.
 ARG LOCALE=POSIX
 ENV LC_ALL ${LOCALE}
