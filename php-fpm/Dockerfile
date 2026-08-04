@@ -1469,11 +1469,15 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install --break-system-packages \
-    mysqlclient \
-    numpy \
-    scipy \
-    pandas
+RUN apt-get update && apt-get install -y \
+    tabix \
+    && python3 -m pip install --break-system-packages \
+        mysqlclient \
+        numpy \
+        scipy \
+        pandas \
+        pytabix \
+    && rm -rf /var/lib/apt/lists/*
 
 # Configure locale.
 ARG LOCALE=POSIX
