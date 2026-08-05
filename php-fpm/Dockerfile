@@ -1477,6 +1477,8 @@ RUN apt-get update && apt-get install -y \
         scipy \
         pandas \
         pytabix \
+        sqlalchemy \
+        pymysql \
     && rm -rf /var/lib/apt/lists/*
 
 # Configure locale.
