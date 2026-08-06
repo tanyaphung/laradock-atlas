@@ -105,6 +105,7 @@ services:
         - ${APP_DATADIR_HOST}:${APP_DATADIR}
         - /gwasatlas_data/GWASatlas/data:/GWASatlas/data
         - /gwasatlas_data/GWASatlas/ENSG:/GWASatlas/ENSG
+        - /gwasatlas_data/GWASatlas/release:/GWASatlas/release
       expose:
         - "9000"
       extra_hosts:
