@@ -97,11 +97,15 @@ services:
           - http_proxy
           - https_proxy
           - no_proxy
+        dockerfile: Dockerfile
       volumes:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
         - docker-in-docker:/certs/client
         - ${APP_DATADIR_HOST}:${APP_DATADIR}
+        - /gwasatlas_data/GWASatlas/data:/GWASatlas/data
+        - /gwasatlas_data/GWASatlas/ENSG:/GWASatlas/ENSG
+        - /gwasatlas_data/GWASatlas/release:/GWASatlas/release
       expose:
         - "9000"
       extra_hosts:
